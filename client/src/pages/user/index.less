@@ -1,0 +1,27 @@
+@import "../../theme";
+
+.user-container {
+  padding: @photo-album-padding;
+  padding-top: 12px;
+}
+
+.user-info {
+  .photo-album-border();
+  padding: 18px;
+  background-color: @photo-album-type-color-primary;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .user-info-avatar {
+    width: 108px;
+    height: 108px;
+    margin-right: 18px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .user-info-nick-name {
+    color: #333;
+  }
+}
