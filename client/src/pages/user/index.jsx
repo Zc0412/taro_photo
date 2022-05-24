@@ -4,6 +4,8 @@ import Taro from "@tarojs/taro";
 
 
 import avatar from "../../assets/images/avatar.png"
+import feedback from "../../assets/images/feedback.png"
+import about from "../../assets/images/about.png"
 import './index.less'
 
 
@@ -40,7 +42,15 @@ const User = () => {
           </View>
         )
       }
+      <View className='user-basic'>
+        <Image src={feedback} className='user-icon' />
+        <Text className='user-text'>Feedback</Text>
+      </View>
 
+      <View className='user-basic user-basic-bg'>
+        <Image src={about} className='user-icon' />
+        <Text className='user-text'>About us</Text>
+      </View>
     </View>
   );
 };

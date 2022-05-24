@@ -1,12 +1,15 @@
 @import "../../theme";
 
+@user-mb: 24px;
+
 .user-container {
   padding: @photo-album-padding;
-  padding-top: 12px;
+  margin-top: 12px;
 }
 
 .user-info {
   .photo-album-border();
+  margin-bottom: @user-mb;
   padding: 18px;
   background-color: @photo-album-type-color-primary;
   display: flex;
@@ -24,4 +27,27 @@
   .user-info-nick-name {
     color: #333;
   }
+}
+
+.user-basic {
+  .photo-album-border();
+  margin-bottom: @user-mb;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .user-icon {
+    width: 68px;
+    height: 68px;
+    margin-right: 18px;
+  }
+
+  .user-text {
+    font-weight: bold;
+  }
+}
+
+.user-basic-bg{
+  background-color: @photo-album-type-color-secondary;
 }
