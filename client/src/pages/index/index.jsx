@@ -27,29 +27,29 @@ const Index = () => {
   }, [])
 
   return (
-    <View className='bg-grid-slate photo-album-container'>
-      <View className='photo-album-head'>
-        <Text className='photo-album-head-l'>PHONE</Text>
-        <View className='photo-album-head-r'>
-          <View className='photo-album-head-r-one' />
-          <View className='photo-album-head-r-two' />
+    <View className='bg-grid-slate home-container'>
+      <View className='home-head'>
+        <Text className='home-head-l'>PHONE</Text>
+        <View className='home-head-r'>
+          <View className='home-head-r-one' />
+          <View className='home-head-r-two' />
         </View>
       </View>
-      <View className='photo-album-head-text'>
+      <View className='home-head-text'>
         <Text>WALLPAPER!</Text>
       </View>
-      <View className='photo-album-type-image-container'>
+      <View className='home-type-image-container'>
         {
           typeDataList?.map(({ cover, e_name, name, ename, picasso_cover, count }) => (
-            <View className='photo-album-type-image-content' key={picasso_cover}>
-              <View className='photo-album-type-image'>
+            <View className='home-type-image-content' key={picasso_cover}>
+              <View className='home-type-image'>
                 <Image src={cover} lazyLoad mode='aspectFill' />
               </View>
-              <View className='photo-album-type-image-footer'>
-                <View className='photo-album-type-text-en'>
+              <View className='home-type-image-footer'>
+                <View className='home-type-text-en'>
                   <Text>{ename}</Text>
                 </View>
-                <View className='photo-album-type-text-num'>
+                <View className='home-type-text-num'>
                   <Text>{count} photos</Text>
                 </View>
               </View>

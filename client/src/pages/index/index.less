@@ -5,11 +5,11 @@
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")
 }
 
-.photo-album-container {
-  padding: 0 24px;
+.home-container {
+  padding: @photo-album-padding;
 }
 
-.photo-album-head {
+.home-head {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,18 +17,18 @@
   padding: 8px 0;
 }
 
-.photo-album-head-text {
+.home-head-text {
   font-weight: bold;
   font-size: 42px;
   margin-top: -12px;
 }
 
-.photo-album-head-l {
+.home-head-l {
   font-size: 24px;
   font-weight: 700;
 }
 
-.photo-album-head-r {
+.home-head-r {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -39,56 +39,54 @@
   background-color: black;
 }
 
-.photo-album-head-r-one {
+.home-head-r-one {
   width: 36px;
   .head();
   margin-bottom: 12px;
 }
 
-.photo-album-head-r-two {
+.home-head-r-two {
   width: 18px;
   .head();
 }
 
-.photo-album-type-image {
-  background-color: aqua;
+.home-type-image {
+  background-color: #000;
 }
 
-.photo-album-type-image-container {
+.home-type-image-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.photo-album-type-image-content {
-  border: 4px solid black;
-  border-bottom-width: 24px;
-  border-right-width: 20px;
+.home-type-image-content {
+  .photo-album-border();
   margin-bottom: 32px;
   overflow: hidden;
 }
 
-.photo-album-type-image-footer {
+.home-type-image-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 6px;
 }
 
-.photo-album-type-image image {
+.home-type-image image {
   width: 100%;
   display: block;
 }
 
 
-.photo-album-type-text-en {
+.home-type-text-en {
   color: #3a3636;
   font-size: 28px;
   font-weight: bold;
   text-transform: capitalize;
 }
 
-.photo-album-type-text-num {
+.home-type-text-num {
   color: #777;
   font-size: 24px;
   font-weight: bold;
