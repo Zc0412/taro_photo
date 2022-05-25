@@ -27,9 +27,9 @@ const Index = () => {
   }, [])
 
   // 跳转详情页面
-  const handleToDetailPage = (id, name) => () => {
+  const handleToDetailPage = (id, ename, rname) => () => {
     Taro.navigateTo({
-      url: `/pages/detail/index?id=${id}&name=${name}`
+      url: `/pages/detail/index?id=${id}&ename=${ename}&rname=${rname}`
     })
   }
 
@@ -47,8 +47,12 @@ const Index = () => {
       </View>
       <View className='home-type-image-container'>
         {
-          typeDataList?.map(({ cover, e_name, name, ename, id, picasso_cover, count }) => (
-            <View className='home-type-image-content' key={picasso_cover} onClick={handleToDetailPage(id, ename)}>
+          typeDataList?.map(({ cover, e_name, name, ename, id, picasso_cover, count, rname }) => (
+            <View
+              className='home-type-image-content'
+              key={picasso_cover}
+              onClick={handleToDetailPage(id, ename, rname)}
+            >
               <View className='home-type-image'>
                 <Image src={cover} lazyLoad mode='aspectFill' />
               </View>

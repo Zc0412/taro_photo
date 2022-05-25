@@ -1,19 +1,57 @@
 @import "../../theme";
 
 .detail-container {
-  padding: @photo-album-padding;
+  padding: 8px 8px 24px;
 
-  .detail-container-content {
+  .detail-card-content {
     display: inline-block;
     width: calc(50% - 8px * 2);
     margin: 0 8px;
-    border-radius: 8px;
-    //overflow: hidden;
-    //TODO
+
+    .detail-card-head {
+      border-radius: 8px;
+      overflow: hidden;
+
+      .detail-card-head-image {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    .detail-card-footer {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      line-height: 20px;
+
+      .detail-card-footer-tag {
+        margin-right: 4px;
+        color: rgba(0, 0, 0, 0.62);
+        font-size: 16px;
+        line-height: 16px;
+      }
+
+      .detail-card-footer-like {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .detail-card-footer-like-icon {
+          width: 18px;
+          height: 18px;
+          margin-right: 4px;
+        }
+
+        .detail-card-footer-like-text {
+          font-size: 18px;
+          color: rgba(0, 0, 0, 0.62);
+        }
+      }
+    }
+
   }
 
-  .detail-container-content-image {
-    width: 100%;
-    display: block;
-  }
+
 }
