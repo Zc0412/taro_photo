@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from "@tarojs/components";
-import Taro, { useRouter } from "@tarojs/taro";
+import Taro, { useRouter, useReachBottom } from "@tarojs/taro";
 
 import like from '../../assets/images/like.png'
 import './index.less'
+
 
 const Detail = () => {
   // 获取路由携带的参数
@@ -14,28 +15,59 @@ const Detail = () => {
   })
   // 图片数据
   const [dataList, setDataList] = useState([])
+  // 返回图片数量
+  const [skip, setSkip] = useState(0)
 
-  useEffect(() => {
+  // 获取壁纸数据
+  const queryCategoryData = () => {
+    Taro.showLoading()
     Taro.request({
       url: `http://service.picasso.adesk.com/v1/vertical/category/${id}/vertical`,
       data: {
         limit: 30, // 每页固定返回30条
-        skip: 0,
-        first: 0,
-        type: 'hot',
+        skip: skip,
+        first: 3,
+        // type: 'new',
+        order: 'hot',
       },
       method: 'GET',
       success: (res) => {
-        setDataList(res?.data?.res?.vertical)
+        setDataList((data) => [...data, ...res?.data?.res?.vertical])
+        Taro.hideLoading()
+      },
+      fail: () => {
+        Taro.hideLoading()
       }
     })
-  }, [id])
+  }
+
+  // 初始加载壁纸数据
+  useEffect(() => {
+    queryCategoryData()
+  }, [id, skip])
+
+  // 触底加载数据
+  useReachBottom(() => {
+    setSkip((prevState) => prevState + 30)
+  })
+
+
+  const handleCard = () => {
+    Taro.navigateTo({
+      url: '/pages/swiper/index',
+      success:  ()=> {
+        Taro.eventCenter.once("acceptDataFromOpenerPage:init", () => {
+          Taro.eventCenter.trigger("acceptDataFromOpenerPage:detail", dataList)
+        })
+      }
+    })
+  }
 
   return (
     <View className='detail-container'>
       {
         dataList?.map(({ thumb, id: kId, tag, favs }) => (
-          <View key={kId} className='detail-card-content'>
+          <View key={kId} className='detail-card-content' onClick={handleCard}>
             <View className='detail-card-head'>
               <Image src={thumb} mode='aspectFill' className='detail-card-head-image' />
             </View>

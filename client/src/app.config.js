@@ -3,6 +3,7 @@ export default {
     'pages/index/index',
     'pages/user/index',
     'pages/detail/index',
+    'pages/swiper/index',
     'pages/data/index',
   ],
   window: {
