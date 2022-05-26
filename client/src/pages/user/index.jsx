@@ -3,9 +3,9 @@ import { Image, Text, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 
 
-import avatar from "../../assets/images/avatar.png"
-import feedback from "../../assets/images/feedback.png"
-import about from "../../assets/images/about.png"
+import avatar from "../../assets/icon/avatar.png"
+import feedback from "../../assets/icon/feedback.png"
+import about from "../../assets/icon/about.png"
 import './index.less'
 
 

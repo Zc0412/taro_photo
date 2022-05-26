@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Image, Text, View } from "@tarojs/components";
 import Taro, { useRouter, useReachBottom } from "@tarojs/taro";
 
-import like from '../../assets/images/like.png'
+import like from '../../assets/icon/like.png'
 import './index.less'
 
 
@@ -20,9 +20,11 @@ const Detail = () => {
 
   // 获取壁纸数据
   const queryCategoryData = () => {
-    Taro.showLoading()
+    Taro.showLoading({
+      title: 'Loading'
+    })
     Taro.request({
-      url: `http://service.picasso.adesk.com/v1/vertical/category/${id}/vertical`,
+      url: `https://service.picasso.adesk.com/v1/vertical/category/${id}/vertical`,
       data: {
         limit: 30, // 每页固定返回30条
         skip: skip,
@@ -52,12 +54,12 @@ const Detail = () => {
   })
 
 
-  const handleCard = () => {
+  const handleCard = (_index) => () => {
     Taro.navigateTo({
       url: '/pages/swiper/index',
-      success:  ()=> {
+      success: () => {
         Taro.eventCenter.once("acceptDataFromOpenerPage:init", () => {
-          Taro.eventCenter.trigger("acceptDataFromOpenerPage:detail", dataList)
+          Taro.eventCenter.trigger("acceptDataFromOpenerPage:detail", { dataList, _index })
         })
       }
     })
@@ -66,8 +68,8 @@ const Detail = () => {
   return (
     <View className='detail-container'>
       {
-        dataList?.map(({ thumb, id: kId, tag, favs }) => (
-          <View key={kId} className='detail-card-content' onClick={handleCard}>
+        dataList?.map(({ thumb, id: kId, tag, favs }, index) => (
+          <View key={kId} className='detail-card-content' onClick={handleCard(index)}>
             <View className='detail-card-head'>
               <Image src={thumb} mode='aspectFill' className='detail-card-head-image' />
             </View>
@@ -75,9 +77,9 @@ const Detail = () => {
               <View>
                 {
                   tag?.length !== 0 ?
-                    tag?.slice(-3).map((item, index) => (
+                    tag?.slice(-3).map((item, i) => (
                       <Text
-                        key={index}
+                        key={i}
                         className='detail-card-footer-tag'
                       >
                         {item}
