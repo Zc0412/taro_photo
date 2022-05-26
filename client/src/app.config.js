@@ -14,8 +14,8 @@ export default {
   },
   cloud: true,
   tabBar: {
-    // color: '#8A8A8A',
-    selectedColor: '#8331FF',
+    color: '#69727E',
+    selectedColor: '#c89ffb',
     list: [
       {
         text: '相册',
