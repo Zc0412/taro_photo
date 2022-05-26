@@ -5,6 +5,7 @@ export default {
     'pages/detail/index',
     'pages/swiper/index',
     'pages/about/index',
+    'pages/feedback/index',
     'pages/data/index',
   ],
   window: {

@@ -1,0 +1,29 @@
+@import "../../theme";
+
+.feedback-container {
+  padding: @photo-album-padding;
+  padding-top: 12px;
+  background-image: @photo-album-bg-image;
+
+  .feedback-item {
+    .feedback-item-text {
+      margin-bottom: 18px;
+      padding: 18px 24px;
+      background-color: @photo-album-type-color-primary;
+      .photo-album-border();
+    }
+
+    .feedback-item-input {
+      margin-bottom: 24px;
+      padding: 18px 24px;
+      .photo-album-border();
+
+      .feedback-placeholder {
+        font-size: 24px;
+        color: rgba(0, 0, 0, 0.42);
+      }
+    }
+  }
+
+
+}

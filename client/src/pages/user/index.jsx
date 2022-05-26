@@ -28,7 +28,7 @@ const User = () => {
       }
     })
   }
-  
+
   return (
     <View className='user-container bg-grid-slate'>
       {
@@ -42,10 +42,10 @@ const User = () => {
           </View>
         )
       }
-      <View className='user-basic'>
+      <Navigator className='user-basic' url='/pages/feedback/index'>
         <Image src={feedback} className='user-icon' />
         <Text className='user-text'>Feedback</Text>
-      </View>
+      </Navigator>
 
       <Navigator className='user-basic user-basic-bg' url='/pages/about/index'>
         <Image src={about} className='user-icon' />
