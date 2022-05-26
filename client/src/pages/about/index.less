@@ -1,0 +1,29 @@
+@import "../../theme";
+
+.about-container {
+  padding: @photo-album-padding;
+  background-image: @photo-album-bg-image;
+
+  .about-content {
+    height: 97vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .about-content-title {
+      text-align: center;
+      line-height: 200px;
+    }
+
+    .about-content-footer {
+      .about-content-version {
+        text-align: center;
+        font-size: 24px;
+        color: rgba(0, 0, 0, 0.42);
+      }
+
+      font-size: 24px;
+      color: rgba(0, 0, 0, 0.32);
+    }
+  }
+}

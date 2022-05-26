@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Image, Text, View } from "@tarojs/components";
+import { Image, Navigator, Text, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 
 
@@ -28,7 +28,7 @@ const User = () => {
       }
     })
   }
-
+  
   return (
     <View className='user-container bg-grid-slate'>
       {
@@ -47,10 +47,10 @@ const User = () => {
         <Text className='user-text'>Feedback</Text>
       </View>
 
-      <View className='user-basic user-basic-bg'>
+      <Navigator className='user-basic user-basic-bg' url='/pages/about/index'>
         <Image src={about} className='user-icon' />
-        <Text className='user-text'>About us</Text>
-      </View>
+        <Text className='user-text'>About</Text>
+      </Navigator>
     </View>
   );
 };
