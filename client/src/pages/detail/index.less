@@ -3,6 +3,24 @@
 .detail-container {
   padding: 8px 8px 24px;
 
+  .detail-tab {
+    padding: 12px 8px;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    text-align: center;
+
+    .detail-tab-item {
+      padding: 0 18px;
+
+    }
+
+    .active {
+      color: @photo-album-type-color-secondary;
+      font-weight: bold;
+    }
+  }
+
   .detail-card-content {
     display: inline-block;
     width: calc(50% - 8px * 2);

@@ -4,6 +4,7 @@ import Taro, { useRouter, useReachBottom } from "@tarojs/taro";
 
 import like from '../../assets/icon/like.png'
 import './index.less'
+import { defaultTabKey, tabList } from "../../constant/common";
 
 
 const Detail = () => {
@@ -17,6 +18,9 @@ const Detail = () => {
   const [dataList, setDataList] = useState([])
   // 返回图片数量
   const [skip, setSkip] = useState(0)
+  // 选中的tab
+  const [tabType, setTabType] = useState(defaultTabKey)
+
 
   // 获取壁纸数据
   const queryCategoryData = () => {
@@ -28,9 +32,8 @@ const Detail = () => {
       data: {
         limit: 30, // 每页固定返回30条
         skip: skip,
-        first: 3,
-        // type: 'new',
-        order: 'hot',
+        first: 0,
+        order: tabType,
       },
       method: 'GET',
       success: (res) => {
@@ -46,14 +49,14 @@ const Detail = () => {
   // 初始加载壁纸数据
   useEffect(() => {
     queryCategoryData()
-  }, [id, skip])
+  }, [id, skip, tabType,])
 
   // 触底加载数据
   useReachBottom(() => {
     setSkip((prevState) => prevState + 30)
   })
 
-
+  // 跳转全屏壁纸页面
   const handleCard = (_index) => () => {
     Taro.navigateTo({
       url: '/pages/swiper/index',
@@ -65,8 +68,27 @@ const Detail = () => {
     })
   }
 
+  // 设置选中的tab
+  const handleTab = (key) => () => {
+    setTabType(key)
+    setDataList([])
+  }
+
   return (
     <View className='detail-container'>
+      <View className='detail-tab'>
+        {
+          tabList?.map(({ tab, key }) => (
+            <Text
+              key={key}
+              className={`${tabType === key && 'active'} detail-tab-item`}
+              onClick={handleTab(key)}
+            >
+              {tab}
+            </Text>
+          ))
+        }
+      </View>
       {
         dataList?.map(({ thumb, id: kId, tag, favs }, index) => (
           <View key={kId} className='detail-card-content' onClick={handleCard(index)}>
