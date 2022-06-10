@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, Image } from '@tarojs/components'
 import Taro from "@tarojs/taro";
-import { INDEX_URL } from "../../constant/common";
 
 import './index.less'
 import { db } from "../../untils/db";
@@ -12,22 +11,21 @@ const Index = () => {
   const [typeDataListLength, setTypeDataListLength] = useState({})
 
   // 获取数据
+
   useEffect(() => {
     Taro.showLoading({
       title: 'Loading',
     })
-    Taro.request({
-      url: INDEX_URL,
-      method: "GET",
-      success: (res) => {
-        if (res?.data?.code === 0) {
-          setTypeDataList(res?.data?.res?.category)
-          Taro.hideLoading()
-        }
+    Taro.cloud.callFunction({
+      name: 'type_list',
+    }).then((res) => {
+      if (res?.result?.dataList?.code === 0) {
+        setTypeDataList(res?.result?.dataList?.res?.category)
+        Taro.hideLoading()
       }
     })
-  }, [])
 
+  }, [])
   useEffect(() => {
     db.collection("todo").doc("0a4ec1f9628348a404bea19a185f335f").get().then((res) => {
       setTypeDataListLength(res?.data)
